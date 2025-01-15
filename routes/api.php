@@ -12,3 +12,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+// TRANSACTIONS
+Route::get('products', [ProductController::class, 'index']);
+Route::post('store', [ProductController::class, 'store'])->middleware('auth:api');
