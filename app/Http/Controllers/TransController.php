@@ -14,7 +14,7 @@ class TransController extends Controller
     public function index()
     {
         $transactions = Transaction::all(); 
-        
+
         if($transactions ->count()>0){
             return response()->json(['transactions' => $transactions], 200);
         }else{
@@ -28,7 +28,17 @@ class TransController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'credit' => 'numeric',
+            'debit' => 'numeric',
+            'account' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+       // $product = Product::create($fields);
+        $transaction = $request->user()->transaction()->create($fields);
+        
+        return response()->json(['Credit' => $transaction], 201);
     }
 
     /**
