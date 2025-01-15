@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Validator;
 
 class TransController extends Controller
@@ -13,7 +13,14 @@ class TransController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::all(); 
+        
+        if($transactions ->count()>0){
+            return response()->json(['transactions' => $transactions], 200);
+        }else{
+            return response()->json(['transactions' => 'There is No Transaction Found'], 200);
+        }
+       
     }
 
     /**
