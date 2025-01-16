@@ -32,7 +32,8 @@ class TransController extends Controller
             'credit' => 'numeric',
             'debit' => 'numeric',
             'account' => 'required|string',
-            'description' => 'required|string',
+            'category' => 'string',
+            'description' => 'string',
         ]);
 
        // $product = Product::create($fields);

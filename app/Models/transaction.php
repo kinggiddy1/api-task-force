@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class transaction extends Model
+class Transaction extends Model
 {
-      //FILLABLE
-      protected $fillable = [
-        'credit', 
-        'debit', 
-        'account',
-        'desciption',
-        'user_id',
-    ];
+   //FILLABLE
+   protected $fillable = [
+    'credit', 
+    'debit', 
+    'account',
+    'category',
+    'description',
+];
 
-    public function user()
+// Relationship
+public function user()
     {
         return $this->belongsTo(User::class);
     }

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id(); 
-            $table->decimal('credit', 8, 2)->default(0.00);
-            $table->decimal('debit', 8, 2)->default(0.00);
-            $table->string('account'); 
+            $table->integer('credit');
+            $table->integer('debit')->nullable();
+            $table->string('account');
+            $table->string('category')->nullable();  
             $table->text('description')->nullable();
             $table->integer('user_id'); 
             $table->timestamps();
