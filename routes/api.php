@@ -16,4 +16,5 @@ Route::post('login', [AuthController::class, 'login']);
 
 // TRANSACTIONS
 Route::get('transactions', [TransController::class, 'index']);
-Route::post('store', [TransController::class, 'store'])->middleware('auth:api');
+Route::post('credit', [TransController::class, 'store'])->middleware('auth:api');
+Route::post('debit', [TransController::class, 'store'])->middleware('auth:api');
