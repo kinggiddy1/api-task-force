@@ -36,7 +36,7 @@ class TransController extends Controller
             'description' => 'string',
         ]);
 
-       // $product = Product::create($fields);
+      
         $transaction = $request->user()->transaction()->create($fields);
         
         return response()->json(['Credit' => $transaction], 201);
