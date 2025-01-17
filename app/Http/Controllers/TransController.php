@@ -66,20 +66,26 @@ class TransController extends Controller
 
     public function bank()
     {
-        $totalBank = Transaction::where('account', 'Bank')->sum('credit');
+        $totalBankCredit = Transaction::where('account', 'Bank')->sum('credit');
+        $totalBankDebit = Transaction::where('account', 'Bank')->sum('debit');
+        $totalBank = ($totalBankCredit - $totalBankDebit);
         return response()->json(['TotalBank' => $totalBank]);
     }
     
 
     public function cash()
     {
-        $totalCash = Transaction::where('account', 'Cash')->sum('credit');
+        $totalCashCredit = Transaction::where('account', 'Cash')->sum('credit');
+        $totalCashDebit = Transaction::where('account', 'Cash')->sum('debit');
+        $totalCash = ($totalCashCredit - $totalCashDebit);
         return response()->json(['TotalCash' => $totalCash]);
     }
 
     public function momo()
     {
-        $totalmomo = Transaction::where('account', 'momo')->sum('credit');
+        $totalMoMoCredit = Transaction::where('account', 'MoMo')->sum('credit');
+        $totalCashDebit = Transaction::where('account', 'MoMo')->sum('debit');
+        $totalmomo = ($totalMoMoCredit - $totalCashDebit);
         return response()->json(['TotalMoMo' => $totalmomo]);
     }
 
