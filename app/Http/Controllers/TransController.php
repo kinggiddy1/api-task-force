@@ -13,7 +13,7 @@ class TransController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all(); 
+        $transactions = Transaction::latest()->get(); 
 
         if($transactions ->count()>0){
             return response()->json(['transactions' => $transactions], 200);
