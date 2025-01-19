@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TransController;
+use App\Http\Controllers\LimitController;
 
 
 Route::get('/user', function (Request $request) {
@@ -24,3 +25,6 @@ Route::post('balance', [TransController::class, 'balance'])->middleware('auth:ap
 Route::post('bank', [TransController::class, 'bank'])->middleware('auth:api');
 Route::post('cash', [TransController::class, 'cash'])->middleware('auth:api');
 Route::post('momo', [TransController::class, 'momo'])->middleware('auth:api');
+
+Route::post('limit', [LimitController::class, 'limit'])->middleware('auth:api');
+Route::get('limitamount', [LimitController::class, 'index']);
